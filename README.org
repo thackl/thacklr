@@ -1,4 +1,9 @@
-A Collection of R Functions and Snippets I Often Use.
-
 This R package is a collection function and snippets I routinely use . Many are
 very basic, others just haven't found a better place yet...
+
+**** Install
+#+BEGIN_SRC R
+library(devtools)
+devtools::install_github("thackl/thacklr")
+#+END_SRC
+
