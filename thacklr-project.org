@@ -1,0 +1,9 @@
+#+BEGIN_SRC R
+library("devtools")
+library(roxygen2)
+
+pkg <- "/home/thackl/projects/coding/code/thacklr"
+devtools::create(pkg, check=FALSE)
+#+END_SRC
+
+
