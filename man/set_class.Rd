@@ -2,28 +2,19 @@
 % Please edit documentation in R/set_class.R
 \name{set_class}
 \alias{set_class}
-\alias{add_class}
 \title{set class}
 \usage{
-set_class(x, value)
-
-add_class(x, value)
+set_class(x, class, add = c("overwrite", "prepend", "append"))
 }
 \arguments{
 \item{x}{Object to assign new class to.}
 
-\item{value}{Class value to assign to x}
+\item{class}{Class value to assign to x}
 }
 \value{
 Object x as class value.
 }
 \description{
-Set class with a parenthetical function.
-
-Add class with a parenthetical function.
-}
-\details{
-From https://github.com/mkearney/tfse.
-
-From https://github.com/mkearney/tfse.
+Set class of an object. Optionally append or prepend to exiting class
+attributes.
 }
