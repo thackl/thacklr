@@ -1,8 +1,6 @@
 #+BEGIN_SRC R
 library("devtools")
 library(roxygen2)
-library(tidyverse)
-devtools::load_all("/home/thackl/projects/coding/code/ggworldmap", export_all=FALSE)
 
 pkg <- "/home/thackl/projects/coding/code/thacklr"
 #devtools::create(pkg, check=TRUE)
