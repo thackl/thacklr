@@ -6,6 +6,8 @@ Description: This R package is a collection function and snippets I routinely us
 Depends: R (>= 3.4.4)
 Imports:
     magrittr
+    ggplot
+    ggtree
 License: MIT
 Encoding: UTF-8
 LazyData: true
