@@ -12,7 +12,7 @@ scale_y_tree <- function(expand=expand_scale(0, 0.6), ...){
 #'
 #' Matches a ggtree and a tibble by shared labels, and returns the respective
 #' y-coordinates for the data.
-#' 
+#'
 #' @param ggtree a ggtree plot object
 #' @param data a tibble with a `label` column
 #' @export
@@ -50,12 +50,12 @@ tree_ylim <- function(ggtree){
 #' argument of the the scales functions, this expansion space is directly added
 #' to the limits, thus all data within the limit+expansions space is plotted.
 #' @inheritParams ggplot2::ggplot
-#' 
+#'
 #' @source https://thackl.github.io/ggtree-composite-plots
 #' @export
 ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
      expand_limits=expand_scale(0,.6), ...){
-  
+
   if(!inherits(ggtree, "ggtree"))
     stop("not a ggtree object")
 
@@ -63,7 +63,7 @@ ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
   limits <- tree_ylim(ggtree)
   limits[1] <- limits[1] + (limits[1] * expand_limits[1]) - expand_limits[2]
   limits[2] <- limits[2] + (limits[2] * expand_limits[3]) + expand_limits[4]
-  
+
   if(flip){
     mapping <- modifyList(aes_(x=~x), mapping)
     data <- mutate(data, x=tree_y(ggtree, data))
@@ -76,4 +76,26 @@ ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
       scale_y_continuous(limits=limits, expand=c(0,0))
   }
   gg
+}
+
+#' Flip Descendant Clades
+#'
+#' Flip two clades descending from `node` in a ggtree. Throw an error for
+#' ambigious cases.
+#' @param tree_view tree view
+#' @param node node
+#' @return ggtree object
+#' @export
+flip_descendants <- function(tree_view=NULL, node){
+  tree_view %<>% ggtree:::get_tree_view()
+  df <- tree_view$data
+  kids <- df$node[df$parent==node]
+  if(length(kids) < 2){
+    stop("Node doesn't have 2 descendent clades, nothing to flip")
+  }
+  if(length(kids) >2){
+    stop(paste0("Node has more than two descendant clades (", kids,
+                "). Explicitly specify the pair you want to flip."))
+  }
+  ggtree::flip(tree_view=tree_view, node1=kids[1], node2=kids[2])
 }

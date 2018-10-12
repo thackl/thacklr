@@ -8,7 +8,7 @@
 #' @export
 clean_tips <- function(tips, tree){
   tips <- tips[tips %in% tree$tip.label]
-  if(length(tips_tree) == 0)
+  if(length(tips) == 0)
     stop("none of the tips found in tree")
   tips
 }
@@ -66,3 +66,20 @@ flip_descendants <- function(tree_view=NULL, node){
   }
   ggtree::flip(tree_view=tree_view, node1=kids[1], node2=kids[2])
 } 
+
+#' Reroot Tree by Outgroup
+#'
+#' Reroot a tree based on set of outgroup tip labels. Sets the root to the
+#' outgroup MRCA.
+#' @param tree phylo object
+#' @param tips outgroup tip label
+#' @return phylo object
+#' @export
+outgroup_root <- function(tree, tips){
+  if(length(tips > 1)){
+    root <- ape::getMRCA(tree, tips)
+  }else{
+    root <- tips
+  }
+  reroot(tree, root)
+}
