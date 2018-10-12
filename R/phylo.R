@@ -45,28 +45,6 @@ prune_long_tip_branches <- function(tree, q=.95, f=5){
   tree
 }
 
-#' Flip Descendant Clades
-#'
-#' Flip two clades descending from `node` in a ggtree. Throw an error for
-#' ambigious cases.
-#' @param tree_view tree view
-#' @param node node
-#' @return ggtree object
-#' @export
-flip_descendants <- function(tree_view=NULL, node){
-  tree_view %<>% ggtree:::get_tree_view()
-  df <- tree_view$data
-  kids <- df$node[df$parent==node]
-  if(length(kids) < 2){
-    stop("Node doesn't have 2 descendent clades, nothing to flip")
-  }
-  if(length(kids) >2){
-    stop(paste0("Node has more than two descendant clades (", kids,
-                "). Explicitly specify the pair you want to flip."))
-  }
-  ggtree::flip(tree_view=tree_view, node1=kids[1], node2=kids[2])
-} 
-
 #' Reroot Tree by Outgroup
 #'
 #' Reroot a tree based on set of outgroup tip labels. Sets the root to the
@@ -75,7 +53,7 @@ flip_descendants <- function(tree_view=NULL, node){
 #' @param tips outgroup tip label
 #' @return phylo object
 #' @export
-outgroup_root <- function(tree, tips){
+reroot_by_outgroup <- function(tree, tips){
   if(length(tips > 1)){
     root <- ape::getMRCA(tree, tips)
   }else{
@@ -83,3 +61,4 @@ outgroup_root <- function(tree, tips){
   }
   reroot(tree, root)
 }
+
