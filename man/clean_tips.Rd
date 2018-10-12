@@ -2,7 +2,7 @@
 % Please edit documentation in R/phylo.R
 \name{clean_tips}
 \alias{clean_tips}
-\title{Remove missing tips}
+\title{Remove Missing Tips}
 \usage{
 clean_tips(tips, tree)
 }

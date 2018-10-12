@@ -2,7 +2,7 @@
 % Please edit documentation in R/phylo.R
 \name{get_children}
 \alias{get_children}
-\title{Get child nodes}
+\title{Get Child Nodes}
 \usage{
 get_children(tree, node)
 }
