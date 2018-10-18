@@ -50,15 +50,28 @@ prune_long_tip_branches <- function(tree, q=.95, f=5){
 #' Reroot a tree based on set of outgroup tip labels. Sets the root to the
 #' outgroup MRCA.
 #' @param tree phylo object
-#' @param tips outgroup tip label
+#' @param tips outgroup tip labels
 #' @return phylo object
 #' @export
 reroot_by_outgroup <- function(tree, tips){
-  if(length(tips > 1)){
+  if(length(tips) > 1){
     root <- ape::getMRCA(tree, tips)
   }else{
-    root <- tips
+    root <- which(tree$tip.label==tips)
   }
   reroot(tree, root)
 }
 
+#' Convert a List into multiPhylo Object
+#'
+#' Turn a list of phylo objects into a multiPhylo object by adding "multiPhylo"
+#' as class attribute. Method for generic function `phytools::as.multiPhylo`.
+#'
+#' @param x list of phylo objects
+#' @export
+#' @return multiPhylo object
+as.multiPhylo.list <- function(x, ...){
+  if(!all(sapply(x, function(y) inherits(y, "phylo"))))
+     stop("Need a list of phylo objects")
+  thacklr::set_class(x, "multiPhylo")
+}
