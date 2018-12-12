@@ -14,7 +14,7 @@ to generate the values for the \code{expand} argument. The defaults are to
 expand the scale by 5\% on each side for continuous variables, and by
 0.6 units on each side for discrete variables.}
 
-\item{...}{Other arguments passed on to \code{scale_(x|y)_continuous}}
+\item{...}{Other arguments passed on to \code{scale_(x|y)_continuous()}}
 }
 \description{
 Overwrites the default expand for continuous scales
