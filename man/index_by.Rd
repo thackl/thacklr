@@ -2,7 +2,7 @@
 % Please edit documentation in R/dplyrx.R
 \name{index_by}
 \alias{index_by}
-\title{Index by keys}
+\title{Index by keys preserving order}
 \usage{
 index_by(.data, ...)
 }

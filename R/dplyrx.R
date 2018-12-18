@@ -1,4 +1,4 @@
-#' Index by keys
+#' Index by keys preserving order
 #'
 #' Add indices by key columns while preserving order according to the first occurence
 #'
@@ -18,4 +18,24 @@ index_by <- function(.data, ...){
   lvls <- unique(keys)
   .data[[i]] <- match(keys, lvls)
   .data
+}
+
+#' Split by key preserving order
+#'
+#' Split by key column while preserving order according to the first
+#' occurence. R base split converts keys to factors, changing default order to
+#' alphanumeric.
+#'
+#' @param key variable to split by
+#' @export
+#' @examples
+#' tibble(x=c(1,1,1,2), y=c("B", "A", "B", "B"), z="foo") %>%
+#'   split_by(x)
+split_by <- function(.data, key){
+  keys <- pull(.data, !!key)
+
+  if(length(keys) == 0) stop("no keys to index by found\n")
+
+  l <- split(.data, keys)
+  l[unique(keys)]
 }
