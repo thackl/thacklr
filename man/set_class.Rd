@@ -2,19 +2,26 @@
 % Please edit documentation in R/set_class.R
 \name{set_class}
 \alias{set_class}
-\title{set class}
+\alias{add_class}
+\alias{strip_class}
+\title{Modify object class attriutes}
 \usage{
 set_class(x, class, add = c("overwrite", "prepend", "append"))
+
+add_class(x, class)
+
+strip_class(x, class)
 }
 \arguments{
 \item{x}{Object to assign new class to.}
 
-\item{class}{Class value to assign to x}
+\item{class}{Class value to add/strip.}
 }
 \value{
 Object x as class value.
 }
 \description{
 Set class of an object. Optionally append or prepend to exiting class
-attributes.
+attributes. `add_class` is short for `set_class(x, class, "prepend")`.
+`strip_class` removes matching class strings from the class attribute vector.
 }
