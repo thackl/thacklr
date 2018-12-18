@@ -1,15 +1,18 @@
 #+BEGIN_SRC R
+library(tidyverse)
 library("devtools")
 library(roxygen2)
-
-pkg <- "/home/thackl/projects/coding/code/thacklr"
+library(here)
+pkg <- here()
 #devtools::create(pkg, check=TRUE)
 devtools::document()
-
+pkg_update()
 thacklr::qw("x y")
 qc(x,y)
 ?qw
 devtools::run_examples(pkg)
+
+?str_subset_unique()
 #+END_SRC
 
 
