@@ -32,7 +32,7 @@ index_by <- function(.data, ...){
 #' tibble(x=c(1,1,1,2), y=c("B", "A", "B", "B"), z="foo") %>%
 #'   split_by(x)
 split_by <- function(.data, key){
-  keys <- pull(.data, !!key)
+  keys <- pull(.data, !!enquo(key))
 
   if(length(keys) == 0) stop("no keys to index by found\n")
 

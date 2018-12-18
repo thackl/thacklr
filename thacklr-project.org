@@ -11,6 +11,11 @@ qc(x,y)
 devtools::run_examples(pkg)
 
 ?str_subset_unique()
+
+pkg_update()
+
+tibble(x=qc(B,A)) %>%
+thacklr::index_by(x)
 #+END_SRC
 
 
