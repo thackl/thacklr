@@ -1,11 +1,9 @@
 #+BEGIN_SRC R
 library(tidyverse)
-library("devtools")
-library(roxygen2)
 library(here)
-pkg <- here()
-#devtools::create(pkg, check=TRUE)
-devtools::document()
+library(devtools)
+library(roxygen2)
+
 pkg_update()
 thacklr::qw("x y")
 qc(x,y)
