@@ -22,6 +22,7 @@ str_which_unique <- function(strings, patterns, require_match=FALSE){
   w
 }
 #' @rdname str_which_unique
+#' @export
 str_subset_unique <- function(strings, patterns, require_match=FALSE){
   strings[str_which_unique(strings, patterns, require_match)]
 }
