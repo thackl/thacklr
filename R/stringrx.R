@@ -7,6 +7,7 @@
 #' @param strings a vector of characters
 #' @param patterns a vector of patterns
 #' @param require_match for each pattern or throw an error
+#' @export
 str_which_unique <- function(strings, patterns, require_match=FALSE){
   w <- map(patterns, function(p){
     m <- str_which(strings, p)
