@@ -21,6 +21,12 @@ no_y_axis <- function ()
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
 
+#' Remove grid from ggplot
+#' @export
+no_grid <- function()
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank())
+
 #' ggplot default color vector
 #'
 #' Emulate ggplot default colors for a given number of categories. Credit to
