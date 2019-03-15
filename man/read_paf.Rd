@@ -2,9 +2,9 @@
 % Please edit documentation in R/read.R
 \name{read_paf}
 \alias{read_paf}
-\title{read a .paf file (minimap/minimap2).}
+\title{Read a .paf file (minimap/minimap2).}
 \usage{
-read_paf(file, ...)
+read_paf(file, max_tags = 20)
 }
 \arguments{
 \item{file}{Either a path to a file, a connection, or literal data
@@ -21,14 +21,23 @@ least one new line to be recognised as data (instead of a path) or be a
 vector of greater than length 1.
 
 Using a value of \code{\link[=clipboard]{clipboard()}} will read from the system clipboard.}
+
+\item{max_tags}{maximum number of optional fields to include}
 }
 \value{
 tibble
 }
 \description{
-Only the first 12 canonical columns. Ignores tagged extra fields.
+Read a minimap/minimap2 .paf file including optional tagged extra fields. The
+optional fields will be parsed into a tidy format, one column per tag.
 }
 \details{
+Because `readr::read_tsv` expects a fixed number of columns, but in .paf the
+number of optional fields can differ among records, this `read_paf` tries to
+read at least as many columns as the longest record has (`max_tags`). The
+resulting warnings for each record with fewer fields of the form "32 columns
+expected, only 22 seen" should thus be ignored.
+
 From the minimap2 manual
 
 +----+--------+---------------------------------------------------------+
@@ -65,4 +74,8 @@ From the minimap2 manual
 | cs |  Z   | Difference string                                     |
 | dv |  f   | Approximate per-base sequence divergence              |
 +----+------+-------------------------------------------------------+
+
+From https://samtools.github.io/hts-specs/SAMtags.pdf
+type may be one of A (character), B (general array), f (real number),
+H (hexadecimal array), i (integer), or Z (string).
 }
