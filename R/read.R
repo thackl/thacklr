@@ -60,10 +60,14 @@ read_paf <- function (file, max_tags = 20){
                  "query_end", "strand", "target_name", "target_length", 
                  "target_start", "target_end", "map_match", "map_length", 
                  "map_quality")
+  col_types <- "ciiicciiiiin"
+  
   if(max_tags > 0){
     col_names <- c(col_names, paste0("tag_", seq_len(max_tags)))
+    col_types <- paste0(col_types, paste(rep("?", max_tags), collapse=""))
   }
-  read_tsv(file, col_names = col_names) %>%
+  
+  read_tsv(file, col_names = col_names, col_types = col_types) %>%
     tidy_paf_tags
 }
 
