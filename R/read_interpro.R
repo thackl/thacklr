@@ -22,7 +22,6 @@
 #' @source https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats
 #' @inheritParams readr::read_tsv
 #' @importFrom readr read_tsv
-#' @param max_tags maximum number of optional fields to include
 #' @export
 #' @return tibble
 read_interpro <- function (file){

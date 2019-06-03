@@ -24,8 +24,6 @@ least one new line to be recognised as data (instead of a path) or be a
 vector of greater than length 1.
 
 Using a value of \code{\link[=clipboard]{clipboard()}} will read from the system clipboard.}
-
-\item{max_tags}{maximum number of optional fields to include}
 }
 \value{
 tibble
