@@ -31,3 +31,8 @@ tibble
 Read a BLAST output in `-outfmt 6/7` format (o6/o7). If BLAST was run
 with custom column specifiers, those have to be passed to the call.
 }
+\details{
+Uses "# " to identify and ignore comment lines in o7. NOTE that any line
+containing this string anywhere, not limited to the line start will be
+trimmed after the "# ".
+}
