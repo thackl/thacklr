@@ -18,6 +18,6 @@ read_gff <- function(gff_file, sources=NULL, types=NULL){
   if(!is.null(sources)) gff <- filter(gff, `source` %in% sources)
   if(!is.null(types)) gff <- filter(gff, type %in% types)
   rlang::inform("Features read:")
-  print(count(gff, `source`, type))
+  print(dplyr::count(gff, `source`, type))
   gff
 }
