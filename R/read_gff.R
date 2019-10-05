@@ -14,10 +14,14 @@ read_gff <- function(gff_file, sources=NULL, types=NULL){
   }
 
   gff <- as_tibble(rtracklayer::import(gff_file)) %>%
-    mutate_if(is.factor, as.character)
+    mutate_if(is.factor, as.character) %>%
+    mutate_if(is_AsIs, as.character)
+
   if(!is.null(sources)) gff <- filter(gff, `source` %in% sources)
   if(!is.null(types)) gff <- filter(gff, type %in% types)
   rlang::inform("Features read:")
   print(dplyr::count(gff, `source`, type))
   gff
 }
+
+is_AsIs <- function(x) inherits(x, "AsIs")
