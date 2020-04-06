@@ -15,7 +15,7 @@ read_gff <- function(gff_file, sources=NULL, types=NULL){
 
   gff <- as_tibble(rtracklayer::import(gff_file)) %>%
     mutate_if(is.factor, as.character) %>%
-    mutate_if(is_AsIs, as.character)
+    mutate_if(is_AsIs, unAsIs)
 
   if(!is.null(sources)) gff <- filter(gff, `source` %in% sources)
   if(!is.null(types)) gff <- filter(gff, type %in% types)
@@ -25,3 +25,9 @@ read_gff <- function(gff_file, sources=NULL, types=NULL){
 }
 
 is_AsIs <- function(x) inherits(x, "AsIs")
+
+unAsIs <- function(x) {
+  if("AsIs" %in% class(x))
+    class(x) <- class(x)[-match("AsIs", class(x))]
+  x
+}
