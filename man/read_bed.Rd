@@ -4,15 +4,18 @@
 \alias{read_bed}
 \title{Read a .bed file}
 \usage{
-read_bed(file)
+read_bed(
+  file,
+  col_names = c("seq_id", "start", "end", "name", "score", "strand")
+)
 }
 \arguments{
 \item{file}{Either a path to a file, a connection, or literal data
 (either a single string or a raw vector).
 
 Files ending in \code{.gz}, \code{.bz2}, \code{.xz}, or \code{.zip} will
-be automatically uncompressed. Files starting with \code{http://},
-\code{https://}, \code{ftp://}, or \code{ftps://} will be automatically
+be automatically uncompressed. Files starting with \verb{http://},
+\verb{https://}, \verb{ftp://}, or \verb{ftps://} will be automatically
 downloaded. Remote gz files can also be automatically downloaded and
 decompressed.
 
@@ -20,7 +23,22 @@ Literal data is most useful for examples and tests. It must contain at
 least one new line to be recognised as data (instead of a path) or be a
 vector of greater than length 1.
 
-Using a value of \code{\link[=clipboard]{clipboard()}} will read from the system clipboard.}
+Using a value of \code{\link[readr:clipboard]{clipboard()}} will read from the system clipboard.}
+
+\item{col_names}{Either \code{TRUE}, \code{FALSE} or a character vector
+of column names.
+
+If \code{TRUE}, the first row of the input will be used as the column
+names, and will not be included in the data frame. If \code{FALSE}, column
+names will be generated automatically: X1, X2, X3 etc.
+
+If \code{col_names} is a character vector, the values will be used as the
+names of the columns, and the first row of the input will be read into
+the first row of the output data frame.
+
+Missing (\code{NA}) column names will generate a warning, and be filled
+in with dummy names \code{X1}, \code{X2} etc. Duplicate column names
+will generate a warning and be made unique with a numeric suffix.}
 }
 \value{
 tibble

@@ -4,8 +4,16 @@
 \alias{distance}
 \title{Compute great circle distances}
 \usage{
-distance(.data, lat = lat, long = long, lat_from = NULL,
-  long_from = NULL, dist_col = "dist", along = TRUE, ...)
+distance(
+  .data,
+  lat = lat,
+  long = long,
+  lat_from = NULL,
+  long_from = NULL,
+  dist_col = "dist",
+  along = TRUE,
+  ...
+)
 }
 \arguments{
 \item{.data}{a tbl with coordinates in degrees}

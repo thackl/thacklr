@@ -7,14 +7,14 @@
 scale_y_tree(expand = expand_scale(0, 0.6), ...)
 }
 \arguments{
-\item{expand}{Vector of range expansion constants used to add some
-padding around the data, to ensure that they are placed some distance
-away from the axes. Use the convenience function \code{\link[=expand_scale]{expand_scale()}}
+\item{expand}{For position scales, a vector of range expansion constants used to add some
+padding around the data to ensure that they are placed some distance
+away from the axes. Use the convenience function \code{\link[ggplot2:expansion]{expansion()}}
 to generate the values for the \code{expand} argument. The defaults are to
 expand the scale by 5\% on each side for continuous variables, and by
 0.6 units on each side for discrete variables.}
 
-\item{...}{Other arguments passed on to \code{scale_(x|y)_continuous()}}
+\item{...}{Other arguments passed on to \verb{scale_(x|y)_continuous()}}
 }
 \description{
 Overwrites the default expand for continuous scales

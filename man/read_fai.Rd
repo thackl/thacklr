@@ -4,8 +4,11 @@
 \alias{read_fai}
 \title{Read fasta index}
 \usage{
-read_fai(file, col_names = c("seq_id", "seq_desc", "length"),
-  keep_index = FALSE)
+read_fai(
+  file,
+  col_names = c("seq_id", "seq_desc", "length"),
+  keep_index = FALSE
+)
 }
 \arguments{
 \item{file}{.fai/.seqkit.fai (plain/pipe), .fa (plain)}
