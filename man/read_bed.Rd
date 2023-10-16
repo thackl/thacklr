@@ -19,9 +19,10 @@ be automatically uncompressed. Files starting with \verb{http://},
 downloaded. Remote gz files can also be automatically downloaded and
 decompressed.
 
-Literal data is most useful for examples and tests. It must contain at
-least one new line to be recognised as data (instead of a path) or be a
-vector of greater than length 1.
+Literal data is most useful for examples and tests. To be recognised as
+literal data, the input must be either wrapped with \code{I()}, be a string
+containing at least one new line, or be a vector containing at least one
+string with a new line.
 
 Using a value of \code{\link[readr:clipboard]{clipboard()}} will read from the system clipboard.}
 
@@ -37,8 +38,9 @@ names of the columns, and the first row of the input will be read into
 the first row of the output data frame.
 
 Missing (\code{NA}) column names will generate a warning, and be filled
-in with dummy names \code{X1}, \code{X2} etc. Duplicate column names
-will generate a warning and be made unique with a numeric suffix.}
+in with dummy names \code{...1}, \code{...2} etc. Duplicate column names
+will generate a warning and be made unique, see \code{name_repair} to control
+how this is done.}
 }
 \value{
 tibble
