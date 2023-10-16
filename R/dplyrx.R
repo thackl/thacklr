@@ -2,6 +2,7 @@
 #'
 #' Add indices by key columns while preserving order according to the first occurence
 #'
+#' @import tidyverse
 #' @param keys in \code{\link[dplyr]{select}} semantics
 #' @export
 #' @examples
